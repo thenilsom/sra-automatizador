@@ -1,0 +1,14 @@
+logs/*
+!.gitkeep
+node_modules/
+vendor/
+bower_components/
+tmp
+.DS_Store
+.idea
+app/jspm_packages
+
+# Para todos os arquivos e sub-pastas localizados na pasta vendor/
+vendor/
+composer.lock
+debug.log

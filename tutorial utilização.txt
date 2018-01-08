@@ -1,0 +1,8 @@
+********** Comandos do Gulp ***************
+
+1- Acessar via terminal a pasta do projeto gulp e usar o comando "npm install" para baixar as dependencias
+do projeto
+
+2 - Usar o comando "npm run gulp build" para realizar as otimizações no projeto
+
+3 - Usar o comando "npm run gulp deploy" para gerar o projeto otimizado.
