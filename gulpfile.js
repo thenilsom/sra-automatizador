@@ -25,6 +25,8 @@ var imagemin = require('gulp-imagemin');
 //plugin para zipar arquivos
 var zip = require('gulp-zip');
 
+var babel  = require('gulp-babel');
+
 //***Variaveis***//
 var caminhoPastaProjeto = 'c:/build-sra/webapp/**/*';
 var destinoPackage = 'c:/build-sra/';
@@ -158,6 +160,7 @@ gulp.task('copy-utils', ['concat-utils'], function(){
 //concatena e minifica
 function concatenarJs(orig, name, dest){
 	return gulp.src(orig)
+	.pipe(babel({presets: ['es2015']}))
 	.pipe(concat(name))
 	.pipe(ngAnnotate())
 	.pipe(uglify())
