@@ -28,11 +28,11 @@ var zip = require('gulp-zip');
 var babel  = require('gulp-babel');
 
 //***Variaveis***//
-var caminhoPastaProjeto = 'c:/build-sra/webapp/**/*';
-var destinoPackage = 'c:/build-sra/';
+var caminhoPastaProjeto = 'C:/Backup Unidade D/AutoCom/project/ac-posto-frontend/src/';
+var destinoPackage = 'c:/versao-ac-posto/';
 
 //copia a pasta webapp e raliza as otimizações
-gulp.task('build', ['copy-folder-webapp'], function(){
+gulp.task('build', ['copy-folder-application', 'copy-folder-partials', 'copy-folder-resources', 'copy-files'], function(){
 	gulp.start('copy-controllers');
 	gulp.start('copy-relatorios');
 	gulp.start('copy-services');
@@ -48,10 +48,29 @@ gulp.task('deploy', ['zip'], function(){
 	gulp.start('clean-webapp');
 });
 
-//copia a pasta webapp para o projeto gulp
-gulp.task('copy-folder-webapp', function(){
-	return gulp.src(caminhoPastaProjeto).pipe(gulp.dest('webapp'));
+//copia a pasta application
+gulp.task('copy-folder-application', function(){
+	return gulp.src(caminhoPastaProjeto + 'application/**/*').pipe(gulp.dest('webapp/application'));
 });
+
+//copa a pasta partials
+gulp.task('copy-folder-partials', function(){
+	return gulp.src(caminhoPastaProjeto + 'partials/**/*').pipe(gulp.dest('webapp/partials'));
+});
+
+//copa a pasta resources
+gulp.task('copy-folder-resources', function(){
+	return gulp.src(caminhoPastaProjeto + 'resources/**/*').pipe(gulp.dest('webapp/resources'));
+});
+
+//copia o restante dos arquivos
+gulp.task('copy-files', function(){
+	return gulp.src([caminhoPastaProjeto + 'icone.png',
+	                 			caminhoPastaProjeto + 'index.html',
+	                 			caminhoPastaProjeto + 'package.json'])
+				.pipe(gulp.dest('webapp/'));
+});
+
 
 //remove pasta dist
 gulp.task('clean-dist', function(){
