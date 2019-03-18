@@ -12,3 +12,5 @@ app/jspm_packages
 vendor/
 composer.lock
 debug.log
+/package-lock.json
+/.project
